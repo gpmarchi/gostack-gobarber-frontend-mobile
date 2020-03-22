@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
+import Input from '~/components/Input';
+import Button from '~/components/Button';
 
 // import { Container } from './styles';
 
@@ -10,11 +12,17 @@ export default function SignIn({ navigation }) {
   return (
     <Background>
       <View>
-        <Text>SignIn</Text>
-        <Button
-          title="Go to SignUp"
-          onPress={() => navigation.navigate('SignUp')}
+        <Input
+          style={{ marginTop: 30 }}
+          icon="call"
+          placeholder="Digite seu nome"
         />
+        <Button
+          style={{ marginTop: 20 }}
+          onPress={() => navigation.navigate('SignUp')}
+        >
+          Entrar
+        </Button>
       </View>
     </Background>
   );
