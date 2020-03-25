@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
@@ -26,35 +25,19 @@ const tabBarOptions = {
 export default function Routes() {
   const signed = useSelector((state) => state.auth.signed);
 
-  const tabScreenOptions = ({ route }) => ({
-    // eslint-disable-next-line react/prop-types
-    tabBarIcon: ({ color, size }) => {
-      if (route.name === 'Dashboard') {
-        return <Icon name="event" size={size} color={color} />;
-      }
-      if (route.name === 'Profile') {
-        return <Icon name="person" size={size} color={color} />;
-      }
-      return <Icon name="person" size={size} color={color} />;
-    },
-  });
-
   return (
     <NavigationContainer>
       {signed ? (
-        <Tab.Navigator
-          screenOptions={tabScreenOptions}
-          tabBarOptions={tabBarOptions}
-        >
+        <Tab.Navigator tabBarOptions={tabBarOptions}>
           <Tab.Screen
             name="Dashboard"
             component={Dashboard}
-            options={{ tabBarLabel: 'Agendamentos' }}
+            options={Dashboard.navigationOptions}
           />
           <Tab.Screen
             name="Profile"
             component={Profile}
-            options={{ tabBarLabel: 'Meu perfil' }}
+            options={Profile.navigationOptions}
           />
         </Tab.Navigator>
       ) : (
