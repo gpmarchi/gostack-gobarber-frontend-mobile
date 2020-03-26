@@ -28,6 +28,7 @@ export default function NewAppointmentStackScreen() {
       <AppointmentStack.Screen
         name="SelectDateTime"
         component={SelectDateTime}
+        options={SelectDateTime.navigationOptions}
       />
       <AppointmentStack.Screen name="Confirm" component={Confirm} />
     </AppointmentStack.Navigator>
