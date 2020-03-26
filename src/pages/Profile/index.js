@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
+import { signOut } from '~/store/modules/auth/actions';
 import Background from '~/components/Background';
 
 import {
@@ -12,6 +13,8 @@ import {
   FormInput,
   Separator,
   SubmitButton,
+  LogoutButton,
+  Text,
 } from './styles';
 
 export default function Profile() {
@@ -36,7 +39,6 @@ export default function Profile() {
   }, [profile]);
 
   function handleSubmit() {
-    console.tron.log('atualizar');
     dispatch(
       updateProfileRequest({
         name,
@@ -46,6 +48,10 @@ export default function Profile() {
         confirmPassword,
       })
     );
+  }
+
+  function handleLogout() {
+    dispatch(signOut());
   }
 
   return (
@@ -110,9 +116,13 @@ export default function Profile() {
             value={confirmPassword}
             onChangeText={setConfirmPassword}
           />
-          <SubmitButton onPress={() => console.tron.log('clique')}>
-            Atualizar perfil
+          <SubmitButton onPress={handleSubmit}>
+            <Text>Atualizar perfil</Text>
           </SubmitButton>
+
+          <LogoutButton onPress={handleLogout}>
+            <Text>Sair do GoBarber</Text>
+          </LogoutButton>
         </Form>
       </Container>
     </Background>

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native';
 
 import Input from '../../components/Input';
-import Button from '../../components/Button';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -32,6 +32,26 @@ export const Separator = styled.View`
   margin: 20px 0 30px;
 `;
 
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(TouchableOpacity)`
   margin-top: 5px;
+  height: 46px;
+  background: #3b9eff;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LogoutButton = styled(TouchableOpacity)`
+  margin-top: 10px;
+  height: 46px;
+  background: #f64c75;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Text = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
 `;
