@@ -8,8 +8,9 @@ import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 import Dashboard from '~/pages/Dashboard';
 import Profile from '~/pages/Profile';
+import NewAppointment from '~/pages/NewAppointment';
 
-const Stack = createStackNavigator();
+const LoginStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const tabBarOptions = {
@@ -35,20 +36,25 @@ export default function Routes() {
             options={Dashboard.navigationOptions}
           />
           <Tab.Screen
+            name="New"
+            component={NewAppointment}
+            options={NewAppointment.navigationOptions}
+          />
+          <Tab.Screen
             name="Profile"
             component={Profile}
             options={Profile.navigationOptions}
           />
         </Tab.Navigator>
       ) : (
-        <Stack.Navigator
+        <LoginStack.Navigator
           screenOptions={{
             headerShown: false,
           }}
         >
-          <Stack.Screen name="SignIn" component={SignIn} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-        </Stack.Navigator>
+          <LoginStack.Screen name="SignIn" component={SignIn} />
+          <LoginStack.Screen name="SignUp" component={SignUp} />
+        </LoginStack.Navigator>
       )}
     </NavigationContainer>
   );
