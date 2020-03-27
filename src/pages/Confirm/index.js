@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import { CommonActions } from '@react-navigation/native';
 
 import api from '~/services/api';
 import Background from '~/components/Background';
@@ -24,6 +25,12 @@ export default function Confirm({ navigation, route }) {
       provider_id: provider.id,
       date: time,
     });
+
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'SelectProvider',
+      })
+    );
 
     navigation.navigate('Dashboard');
   }
